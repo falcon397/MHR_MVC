@@ -40,7 +40,7 @@ pipeline {
         
         stage('Build for Release') {
             steps {
-				bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%strProjectName%/%strProjectName%.csproj" /T:Rebuild /p:Configuration=Release /p:OutputPath="obj\\RELEASE" /p:VisualStudioVersion=14.0'
+				bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%strProjectName%/%strProjectName%.csproj" /T:Rebuild /p:Configuration=Release /p:OutputPath="obj\\RELEASE" /p:VisualStudioVersion=15.0'
             }
         }
         
