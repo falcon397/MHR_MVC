@@ -13,7 +13,7 @@ pipeline {
 				bat 'C:\\Services\\nuget.exe restore %strProjectName%.sln'
                 withSonarQubeEnv('Huckshome SonarQube Server') {
                     bat '"%sqScannerMsBuildHome%\\SonarQube.Scanner.MSBuild.exe" begin /k:%strProjectName% /n:%strProjectName% /v:1.0.0.%BUILD_NUMBER% /d:sonar.host.url=%SONAR_HOST_URL% /d:sonar.login=%SONAR_AUTH_TOKEN%'
-                    bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\amd64\\MSBuild.exe" %strProjectName%.sln /t:Build /p:Configuration=Debug'
+                    bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" %strProjectName%.sln /t:Build /p:Configuration=Debug'
                     bat '"%sqScannerMsBuildHome%\\SonarQube.Scanner.MSBuild.exe" end'
                 }
             }
@@ -40,7 +40,7 @@ pipeline {
         
         stage('Build for Release') {
             steps {
-				bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\amd64\\MSBuild.exe" "%strProjectName%/%strProjectName%.csproj" /T:Rebuild /p:Configuration=Release /p:OutputPath="obj\\Release"'
+				bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%strProjectName%/%strProjectName%.csproj" /T:Rebuild,Package /p:Configuration=Release /p:OutputPath="obj\\Release"'
             }
         }
         
