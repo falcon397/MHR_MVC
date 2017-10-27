@@ -40,14 +40,14 @@ pipeline {
         
         stage('Build for Release') {
             steps {
-				bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%strProjectName%/%strProjectName%.csproj" /T:Rebuild /p:Configuration=Release /p:OutputPath="obj\\RELEASE"'
+				bat '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\Professional\\MSBuild\\15.0\\Bin\\MSBuild.exe" "%strProjectName%/%strProjectName%.csproj" /T:Rebuild /p:Configuration=Release /p:OutputPath="obj\\Release"'
             }
         }
         
         stage('Deploy') {
             steps {
                 bat 'del Z:\\Websites\\%strProjectName%\\**'
-                bat 'xcopy "%strProjectName%\\obj\\Release\\_PublishedWebsites\\%strProjectName%\\**" "Z:\\Websites\\%strProjectName%\\" /s /y'
+                bat 'xcopy "%strProjectName%\\obj\\Release\\netcoreapp2.0\\**" "Z:\\Websites\\%strProjectName%\\" /s /y'
             }
         }
     }
