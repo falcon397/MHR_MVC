@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/projects/MHR_MVC",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:50243/",
       "sslPort": 0
@@ -16,7 +20,7 @@
       }
     },
     "MHR_MVC": {
-      "commandName": "Project",
+      "commandName": "IIS",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
