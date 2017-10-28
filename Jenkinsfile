@@ -3,6 +3,7 @@ pipeline {
     environment {
         sqScannerMsBuildHome = tool 'Scanner for MSBuild'
 		strProjectName = 'MHR_MVC'
+		qualityGate = ''
     }
     
     agent any
@@ -23,11 +24,12 @@ pipeline {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
 					script {
-						def qg = waitForQualityGate()
-						echo '%qg.status%'
-						echo 'qg.status'
-						echo '${qg.status}'
+						SET qualityGate=waitForQualityGate()
+						echo '%qualityGate.status%'
+						echo '%qualityGate%.status'
+						echo '${qqualityGateg.status}'
 						if (qg.status != 'OK') {
+							echo 'Something has gone wrong'
 							error "Pipeline aborted due to quality gate failure: ${qg.status}"
 						}
 					}
