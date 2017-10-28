@@ -21,7 +21,11 @@ pipeline {
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-					bat '"%sqScannerMsBuildHome%\\sonar-scanner-3.0.3.778\\bin\\sonar-scanner.bat"'
+						def qg = waitForQualityGate()
+						if ((qg.status !== 'OK')) {
+							error "Pipeline aborted due to quality gate failure: ${qg.status}"
+						}
+
                 }
             }
         }
