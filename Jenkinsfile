@@ -1,11 +1,11 @@
 #!groovy​
-node {
-    
+pipeline {
 	environment {
         sqScannerMsBuildHome = tool 'Scanner for MSBuild'
 		strProjectName = 'MHR_MVC'
     }
-    
+	
+	agent any
     
     stages {
         stage('Build + SonarQube analysis') {
