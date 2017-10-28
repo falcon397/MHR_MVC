@@ -3,7 +3,6 @@ pipeline {
     environment {
         sqScannerMsBuildHome = tool 'Scanner for MSBuild'
 		strProjectName = 'MHR_MVC'
-		qualityGate = ''
     }
     
     agent any
