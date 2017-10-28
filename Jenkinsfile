@@ -18,7 +18,6 @@ pipeline {
                 }
             }
         }
-        void qualityGate() {
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
@@ -29,7 +28,6 @@ pipeline {
                 }
             }
         }
-		}
         
         stage('Test') {
             steps {
