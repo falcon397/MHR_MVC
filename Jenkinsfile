@@ -1,11 +1,11 @@
 #!groovy​
 node {
-    environment {
+    
+	environment {
         sqScannerMsBuildHome = tool 'Scanner for MSBuild'
 		strProjectName = 'MHR_MVC'
     }
     
-    agent any
     
     stages {
         stage('Build + SonarQube analysis') {
@@ -21,10 +21,7 @@ node {
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-						def qg = waitForQualityGate()
-						if (qg.status != 'OK') {
-							error "Pipeline aborted due to quality gate failure: ${qg.status}"
-						}
+					bat '"%sqScannerMsBuildHome%\\bin\\sonar-runner.bat"'
                 }
             }
         }
