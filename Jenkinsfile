@@ -25,6 +25,8 @@ pipeline {
 					script {
 						def qg = waitForQualityGate()
 						echo '%qg.status%'
+						echo 'qg.status'
+						echo '${qg.status}'
 						if (qg.status != 'OK') {
 							error "Pipeline aborted due to quality gate failure: ${qg.status}"
 						}
