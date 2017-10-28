@@ -18,23 +18,18 @@ pipeline {
                 }
             }
         }
-        
+        void qualityGate() {
         stage("Quality Gate") {
             steps {
                 timeout(time: 1, unit: 'HOURS') {
-					script {
-						SET qualityGate=waitForQualityGate()
-						echo '%qualityGate.status%'
-						echo '%qualityGate%.status'
-						echo '${qqualityGateg.status}'
+						def qg = waitForQualityGate()
 						if (qg.status != 'OK') {
-							echo 'Something has gone wrong'
 							error "Pipeline aborted due to quality gate failure: ${qg.status}"
-						}
 					}
                 }
             }
         }
+		}
         
         stage('Test') {
             steps {
