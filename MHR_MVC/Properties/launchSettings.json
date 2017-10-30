@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "http://localhost/projects/MHR_MVC",
+      "applicationUrl": "http://localhost/dev/MHR_MVC",
       "sslPort": 0
     },
     "iisExpress": {

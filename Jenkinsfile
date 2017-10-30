@@ -45,8 +45,8 @@ pipeline {
         
         stage('Deploy') {
             steps {
-                bat 'del Z:\\Websites\\%strProjectName%\\**'
-                bat 'xcopy "%strProjectName%\\obj\\Release\\netcoreapp2.0\\**" "Z:\\Websites\\%strProjectName%\\" /s /y'
+                bat 'del Z:\\Websites\\dev\\%strProjectName%\\**'
+                bat 'xcopy "%strProjectName%\\obj\\Release\\netcoreapp2.0\\**" "Z:\\Websites\\dev\\%strProjectName%\\" /s /y'
             }
         }
     }
